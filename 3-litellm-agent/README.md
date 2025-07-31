@@ -1,5 +1,21 @@
 # LiteLLM Agent Example
 
+## Navigation
+
+- [Home](../README.md)
+- [Basic Agent](../1-basic-agent/README.md)
+- [Tool Agent](../2-tool-agent/README.md)
+- **LiteLLM Agent**
+- [Structured Outputs](../4-structured-outputs/README.md)
+- [Sessions And State](../5-sessions-and-state/README.md)
+- [Persistent Storage](../6-persistent-storage/README.md)
+- [Multi Agent](../7-multi-agent/README.md)
+- [Stateful Multi Agent](../8-stateful-multi-agent/README.md)
+- [Callbacks](../9-callbacks/README.md)
+- [Sequential Agent](../10-sequential-agent/README.md)
+- [Parallel Agent](../11-parallel-agent/README.md)
+- [Loop Agent](../12-loop-agent/README.md)
+
 ## What is LiteLLM?
 
 LiteLLM is a Python library that provides a unified interface for interacting with multiple Large Language Model (LLM) providers through a single, consistent API. It serves as an adapter that allows you to:
@@ -27,12 +43,12 @@ This example demonstrates how to use LiteLLM with ADK to create an agent powered
 When using LiteLLM to integrate non-Google models with ADK, there are some important limitations to be aware of:
 
 1. **No Access to Google Built-in Tools**: Non-Google models (like OpenAI, Anthropic, etc.) cannot use ADK's built-in Google tools such as:
+
    - Google Search
    - Code Execution
    - Vertex AI Search
 
 2. **Custom Function Tools Only**: When using non-Google models, you can only use custom function tools (like the `get_dad_joke()` function in this example).
-
 
 These limitations exist because built-in tools are specifically designed to work with Google's models and infrastructure. However, you can still create powerful agents using custom function tools and the wide variety of models available through LiteLLM.
 
@@ -41,6 +57,7 @@ These limitations exist because built-in tools are specifically designed to work
 This example uses the same virtual environment created in the root directory. Make sure you have:
 
 1. Activated the virtual environment from the root directory:
+
 ```bash
 # macOS/Linux:
 source ../.venv/bin/activate
@@ -73,6 +90,7 @@ To run the LiteLLM agent example:
 1. Navigate to the 3-litellm-agent directory containing your agent folder.
 
 2. Start the interactive web UI:
+
 ```bash
 adk web
 ```

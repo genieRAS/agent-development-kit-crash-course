@@ -1,5 +1,21 @@
 # Sequential Agents in ADK
 
+## Navigation
+
+- [Home](../README.md)
+- [Basic Agent](../1-basic-agent/README.md)
+- [Tool Agent](../2-tool-agent/README.md)
+- [LiteLLM Agent](../3-litellm-agent/README.md)
+- [Structured Outputs](../4-structured-outputs/README.md)
+- [Sessions And State](../5-sessions-and-state/README.md)
+- [Persistent Storage](../6-persistent-storage/README.md)
+- [Multi Agent](../7-multi-agent/README.md)
+- [Stateful Multi Agent](../8-stateful-multi-agent/README.md)
+- [Callbacks](../9-callbacks/README.md)
+- **Sequential Agent**
+- [Parallel Agent](../11-parallel-agent/README.md)
+- [Loop Agent](../12-loop-agent/README.md)
+
 This example demonstrates how to implement a Sequential Agent in the Agent Development Kit (ADK). The main agent in this example, `lead_qualification_agent`, is a Sequential Agent that executes sub-agents in a predefined order, with each agent's output feeding into the next agent in the sequence.
 
 ## What are Sequential Agents?
@@ -17,10 +33,12 @@ Use Sequential Agents when you need a deterministic, step-by-step workflow where
 In this example, we've created `lead_qualification_agent` as a Sequential Agent that implements a lead qualification pipeline for sales teams. This Sequential Agent orchestrates three specialized sub-agents:
 
 1. **Lead Validator Agent**: Checks if the lead information is complete enough for qualification
+
    - Validates for required information like contact details and interest
    - Outputs a simple "valid" or "invalid" with a reason
 
 2. **Lead Scorer Agent**: Scores valid leads on a scale of 1-10
+
    - Analyzes factors like urgency, decision-making authority, budget, and timeline
    - Provides a numeric score with a brief justification
 
@@ -39,6 +57,7 @@ The `lead_qualification_agent` Sequential Agent orchestrates this process by:
 3. Running the Recommender last (which can access both validation and scoring results)
 
 The output of each sub-agent is stored in the session state using the `output_key` parameter:
+
 - `validation_status`
 - `lead_score`
 - `action_recommendation`
@@ -76,6 +95,7 @@ The output of each sub-agent is stored in the session state using the `output_ke
 ### Setup
 
 1. Activate the virtual environment from the root directory:
+
 ```bash
 # macOS/Linux:
 source ../.venv/bin/activate
@@ -86,6 +106,7 @@ source ../.venv/bin/activate
 ```
 
 2. Copy the `.env.example` file to `.env` and add your Google API key:
+
 ```
 GOOGLE_API_KEY=your_api_key_here
 ```
@@ -104,6 +125,7 @@ Then select "lead_qualification_agent" from the dropdown menu in the web UI.
 Try these example interactions:
 
 ### Qualified Lead Example:
+
 ```
 Lead Information:
 Name: Sarah Johnson
@@ -118,6 +140,7 @@ Notes: Currently using a competitor's product but unhappy with performance
 ```
 
 ### Unqualified Lead Example:
+
 ```
 Lead Information:
 Name: John Doe
@@ -137,4 +160,4 @@ ADK offers different types of workflow agents for different needs:
 ## Additional Resources
 
 - [ADK Sequential Agents Documentation](https://google.github.io/adk-docs/agents/workflow-agents/sequential-agents/)
-- [Full Code Development Pipeline Example](https://google.github.io/adk-docs/agents/workflow-agents/sequential-agents/#full-example-code-development-pipeline) 
+- [Full Code Development Pipeline Example](https://google.github.io/adk-docs/agents/workflow-agents/sequential-agents/#full-example-code-development-pipeline)

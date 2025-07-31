@@ -1,5 +1,21 @@
 # Sessions and State Management in ADK
 
+## Navigation
+
+- [Home](../README.md)
+- [Basic Agent](../1-basic-agent/README.md)
+- [Tool Agent](../2-tool-agent/README.md)
+- [LiteLLM Agent](../3-litellm-agent/README.md)
+- [Structured Outputs](../4-structured-outputs/README.md)
+- **Sessions And State**
+- [Persistent Storage](../6-persistent-storage/README.md)
+- [Multi Agent](../7-multi-agent/README.md)
+- [Stateful Multi Agent](../8-stateful-multi-agent/README.md)
+- [Callbacks](../9-callbacks/README.md)
+- [Sequential Agent](../10-sequential-agent/README.md)
+- [Parallel Agent](../11-parallel-agent/README.md)
+- [Loop Agent](../12-loop-agent/README.md)
+
 This example demonstrates how to create and manage stateful sessions in the Agent Development Kit (ADK), enabling your agents to maintain context and remember user information across interactions.
 
 ## What Are Sessions in ADK?
@@ -39,6 +55,7 @@ The example uses a simple question-answering agent that responds based on stored
 ### Setup
 
 1. Activate the virtual environment from the root directory:
+
 ```bash
 # macOS/Linux:
 source ../.venv/bin/activate
@@ -49,6 +66,7 @@ source ../.venv/bin/activate
 ```
 
 2. Create a `.env` file and add your Google API key:
+
 ```
 GOOGLE_API_KEY=your_api_key_here
 ```
@@ -62,6 +80,7 @@ python basic_stateful_session.py
 ```
 
 This will:
+
 1. Create a new session with user information
 2. Initialize the agent with access to that session
 3. Process a user query about the stored preferences
@@ -115,9 +134,9 @@ instruction="""
 You are a helpful assistant that answers questions about the user's preferences.
 
 Here is some information about the user:
-Name: 
+Name:
 {user_name}
-Preferences: 
+Preferences:
 {user_preferences}
 """
 ```

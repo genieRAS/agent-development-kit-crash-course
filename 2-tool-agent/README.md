@@ -1,5 +1,21 @@
 # Tool Agent Example
 
+## Navigation
+
+- [Home](../README.md)
+- [Basic Agent](../1-basic-agent/README.md)
+- **Tool Agent**
+- [LiteLLM Agent](../3-litellm-agent/README.md)
+- [Structured Outputs](../4-structured-outputs/README.md)
+- [Sessions And State](../5-sessions-and-state/README.md)
+- [Persistent Storage](../6-persistent-storage/README.md)
+- [Multi Agent](../7-multi-agent/README.md)
+- [Stateful Multi Agent](../8-stateful-multi-agent/README.md)
+- [Callbacks](../9-callbacks/README.md)
+- [Sequential Agent](../10-sequential-agent/README.md)
+- [Parallel Agent](../11-parallel-agent/README.md)
+- [Loop Agent](../12-loop-agent/README.md)
+
 ## What is a Tool Agent?
 
 A Tool Agent extends the basic ADK agent by incorporating tools that allow the agent to perform actions beyond just generating text responses. Tools enable agents to interact with external systems, retrieve information, and perform specific functions to accomplish tasks more effectively.
@@ -9,6 +25,7 @@ In this example, we demonstrate how to build an agent that can use built-in tool
 ## Key Components
 
 ### 1. Built-in Tools
+
 ADK provides several built-in tools that you can use with your agents:
 
 - **Google Search**: Allows your agent to search the web for information
@@ -18,6 +35,7 @@ ADK provides several built-in tools that you can use with your agents:
 **Important Note**: Currently, for each root agent or single agent, only one built-in tool is supported. See the [ADK documentation](https://google.github.io/adk-docs/tools/built-in-tools/#use-built-in-tools-with-other-tools) for more details.
 
 ### 2. Custom Function Tools
+
 You can create your own tools by defining Python functions. These custom tools extend your agent's capabilities to perform specific tasks.
 
 #### Best Practices for Custom Function Tools:
@@ -90,6 +108,7 @@ The file also includes a commented-out example of a custom function tool `get_cu
 This example uses the same virtual environment created in the root directory. Make sure you have:
 
 1. Activated the virtual environment from the root directory:
+
 ```bash
 # macOS/Linux:
 source ../.venv/bin/activate
@@ -110,6 +129,7 @@ To run the tool agent example:
 1. Navigate to the 2-tool-agent directory containing your agent folder.
 
 2. Start the interactive web UI:
+
 ```bash
 adk web
 ```

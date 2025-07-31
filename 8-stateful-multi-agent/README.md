@@ -1,5 +1,21 @@
 # Stateful Multi-Agent Systems in ADK
 
+## Navigation
+
+- [Home](../README.md)
+- [Basic Agent](../1-basic-agent/README.md)
+- [Tool Agent](../2-tool-agent/README.md)
+- [LiteLLM Agent](../3-litellm-agent/README.md)
+- [Structured Outputs](../4-structured-outputs/README.md)
+- [Sessions And State](../5-sessions-and-state/README.md)
+- [Persistent Storage](../6-persistent-storage/README.md)
+- [Multi Agent](../7-multi-agent/README.md)
+- **Stateful Multi Agent**
+- [Callbacks](../9-callbacks/README.md)
+- [Sequential Agent](../10-sequential-agent/README.md)
+- [Parallel Agent](../11-parallel-agent/README.md)
+- [Loop Agent](../12-loop-agent/README.md)
+
 This example demonstrates how to create a stateful multi-agent system in ADK, combining the power of persistent state management with specialized agent delegation. This approach creates intelligent agent systems that remember user information across interactions while leveraging specialized domain expertise.
 
 ## What is a Stateful Multi-Agent System?
@@ -10,6 +26,7 @@ A Stateful Multi-Agent System combines two powerful patterns:
 2. **Multi-Agent Architecture**: Distributing tasks among specialized agents based on their expertise
 
 The result is a sophisticated agent ecosystem that can:
+
 - Remember user information and interaction history
 - Route queries to the most appropriate specialized agent
 - Provide personalized responses based on past interactions
@@ -66,6 +83,7 @@ session_service.create_session(
 ### 2. State Sharing Across Agents
 
 All agents in the system can access the same session state, enabling:
+
 - Root agent to track interaction history
 - Sales agent to update purchased courses
 - Course support agent to check if user has purchased specific courses
@@ -83,9 +101,9 @@ customer_service_agent = Agent(
     instruction="""
     You are the primary customer service agent for the AI Developer Accelerator community.
     Your role is to help users with their questions and direct them to the appropriate specialized agent.
-    
+
     # ... detailed instructions ...
-    
+
     """,
     sub_agents=[policy_agent, sales_agent, course_support_agent, order_agent],
     tools=[get_current_time],
@@ -95,18 +113,22 @@ customer_service_agent = Agent(
 ## How It Works
 
 1. **Initial Session Creation**:
+
    - A new session is created with user information and empty interaction history
    - Session state is initialized with default values
 
 2. **Conversation Tracking**:
+
    - Each user message is added to `interaction_history` in the state
    - Agents can review past interactions to maintain context
 
 3. **Query Routing**:
+
    - The root agent analyzes the user query and decides which specialist should handle it
    - Specialized agents receive the full state context when delegated to
 
 4. **State Updates**:
+
    - When a user purchases a course, the sales agent updates `purchased_courses`
    - These updates are available to all agents for future interactions
 
@@ -116,10 +138,10 @@ customer_service_agent = Agent(
 
 ## Getting Started
 
-
 ### Setup
 
 1. Activate the virtual environment from the root directory:
+
 ```bash
 # macOS/Linux:
 source ../.venv/bin/activate
@@ -130,6 +152,7 @@ source ../.venv/bin/activate
 ```
 
 2. Make sure your Google API key is set in the `.env` file:
+
 ```
 GOOGLE_API_KEY=your_api_key_here
 ```
@@ -143,6 +166,7 @@ python main.py
 ```
 
 This will:
+
 1. Initialize a new session with default state
 2. Start an interactive conversation with the customer service agent
 3. Track all interactions in the session state
@@ -153,14 +177,17 @@ This will:
 Try this conversation flow to test the system:
 
 1. **Start with a general query**:
+
    - "What courses do you offer?"
    - (Root agent will route to sales agent)
 
 2. **Ask about purchasing**:
+
    - "I want to buy the AI Marketing Platform course"
    - (Sales agent will process the purchase and update state)
 
 3. **Ask about course content**:
+
    - "Can you tell me about the content in the AI Marketing Platform course?"
    - (Root agent will route to course support agent, which now has access)
 

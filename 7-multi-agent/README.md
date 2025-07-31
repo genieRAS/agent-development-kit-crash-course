@@ -1,5 +1,21 @@
 # Multi-Agent Systems in ADK
 
+## Navigation
+
+- [Home](../README.md)
+- [Basic Agent](../1-basic-agent/README.md)
+- [Tool Agent](../2-tool-agent/README.md)
+- [LiteLLM Agent](../3-litellm-agent/README.md)
+- [Structured Outputs](../4-structured-outputs/README.md)
+- [Sessions And State](../5-sessions-and-state/README.md)
+- [Persistent Storage](../6-persistent-storage/README.md)
+- **Multi Agent**
+- [Stateful Multi Agent](../8-stateful-multi-agent/README.md)
+- [Callbacks](../9-callbacks/README.md)
+- [Sequential Agent](../10-sequential-agent/README.md)
+- [Parallel Agent](../11-parallel-agent/README.md)
+- [Loop Agent](../12-loop-agent/README.md)
+
 This example demonstrates how to create a multi-agent system in ADK, where specialized agents collaborate to handle complex tasks, each focusing on their area of expertise.
 
 ## What is a Multi-Agent System?
@@ -30,15 +46,19 @@ parent_folder/
 ### Essential Structure Components:
 
 1. **Root Agent Package**
+
    - Must have the standard agent structure (like in the basic agent example)
    - The `agent.py` file must define a `root_agent` variable
 
 2. **Sub-agents Directory**
+
    - Typically organized as a directory called `sub_agents` inside the root agent folder
    - Each sub-agent should be in its own directory following the same structure as regular agents
 
 3. **Importing Sub-agents**
+
    - Root agent must import sub-agents to use them:
+
    ```python
    from .sub_agents.funny_nerd.agent import funny_nerd
    from .sub_agents.stock_analyst.agent import stock_analyst
@@ -68,6 +88,7 @@ root_agent = Agent(
 ```
 
 **Characteristics:**
+
 - Complete delegation - sub-agent takes over the entire response
 - The sub-agent decision is final and takes control of the conversation
 - Root agent acts as a "router" determining which specialist should handle the query
@@ -92,6 +113,7 @@ root_agent = Agent(
 ```
 
 **Characteristics:**
+
 - Sub-agent returns results to the root agent
 - Root agent maintains control and can incorporate the sub-agent's response into its own
 - Multiple tool calls can be made to different agent tools in a single response
@@ -153,7 +175,7 @@ root_agent = Agent(
     model="gemini-2.0-flash",
     description="Root Agent",
     tools=[
-        agent_tool.AgentTool(agent=search_agent), 
+        agent_tool.AgentTool(agent=search_agent),
         agent_tool.AgentTool(agent=coding_agent)
     ],
 )
@@ -176,6 +198,7 @@ The manager agent routes queries to the appropriate specialist based on the cont
 This example uses the same virtual environment created in the root directory. Make sure you have:
 
 1. Activated the virtual environment from the root directory:
+
 ```bash
 # macOS/Linux:
 source ../.venv/bin/activate
@@ -196,6 +219,7 @@ To run the multi-agent example:
 1. Navigate to the 6-multi-agent directory containing your agent folders.
 
 2. Start the interactive web UI:
+
 ```bash
 adk web
 ```
@@ -209,6 +233,7 @@ adk web
 ### Troubleshooting
 
 If your multi-agent setup doesn't appear properly in the dropdown menu:
+
 - Make sure you're running `adk web` from the parent directory (6-multi-agent)
 - Verify that each agent's `__init__.py` properly imports its respective `agent.py`
 - Check that the root agent properly imports all sub-agents

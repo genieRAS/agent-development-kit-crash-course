@@ -1,5 +1,21 @@
 # Parallel Agents in ADK
 
+## Navigation
+
+- [Home](../README.md)
+- [Basic Agent](../1-basic-agent/README.md)
+- [Tool Agent](../2-tool-agent/README.md)
+- [LiteLLM Agent](../3-litellm-agent/README.md)
+- [Structured Outputs](../4-structured-outputs/README.md)
+- [Sessions And State](../5-sessions-and-state/README.md)
+- [Persistent Storage](../6-persistent-storage/README.md)
+- [Multi Agent](../7-multi-agent/README.md)
+- [Stateful Multi Agent](../8-stateful-multi-agent/README.md)
+- [Callbacks](../9-callbacks/README.md)
+- [Sequential Agent](../10-sequential-agent/README.md)
+- **Parallel Agent**
+- [Loop Agent](../12-loop-agent/README.md)
+
 This example demonstrates how to implement a Parallel Agent in the Agent Development Kit (ADK). The main agent in this example, `system_monitor_agent`, uses a Parallel Agent to gather system information concurrently and then synthesizes it into a comprehensive system health report.
 
 ## What are Parallel Agents?
@@ -17,6 +33,7 @@ Use Parallel Agents when you need to execute multiple independent tasks efficien
 In this example, we've created a system monitoring application that uses a Parallel Agent to gather system information. The workflow consists of:
 
 1. **Parallel System Information Gathering**: Using a `ParallelAgent` to concurrently collect data about:
+
    - CPU usage and statistics
    - Memory utilization
    - Disk space and usage
@@ -26,14 +43,17 @@ In this example, we've created a system monitoring application that uses a Paral
 ### Sub-Agents
 
 1. **CPU Info Agent**: Collects and analyzes CPU information
+
    - Retrieves core counts, usage statistics, and performance metrics
    - Identifies potential performance issues (high CPU usage)
 
 2. **Memory Info Agent**: Gathers memory usage information
+
    - Collects total, used, and available memory
    - Analyzes memory pressure and swap usage
 
 3. **Disk Info Agent**: Analyzes disk space and usage
+
    - Reports on total, used, and free disk space
    - Identifies disks that are running low on space
 
@@ -91,6 +111,7 @@ This hybrid approach demonstrates how to combine workflow agent types for optima
 ### Setup
 
 1. Activate the virtual environment from the root directory:
+
 ```bash
 # macOS/Linux:
 source ../.venv/bin/activate
@@ -101,6 +122,7 @@ source ../.venv/bin/activate
 ```
 
 2. Copy the `.env.example` file to `.env` and add your Google API key:
+
 ```
 GOOGLE_API_KEY=your_api_key_here
 ```
@@ -151,4 +173,4 @@ ADK offers different types of workflow agents for different needs:
 ## Additional Resources
 
 - [ADK Parallel Agents Documentation](https://google.github.io/adk-docs/agents/workflow-agents/parallel-agents/)
-- [Full Example: Parallel Web Research](https://google.github.io/adk-docs/agents/workflow-agents/parallel-agents/#full-example-parallel-web-research) 
+- [Full Example: Parallel Web Research](https://google.github.io/adk-docs/agents/workflow-agents/parallel-agents/#full-example-parallel-web-research)

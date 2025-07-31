@@ -1,5 +1,21 @@
 # Persistent Storage in ADK
 
+## Navigation
+
+- [Home](../README.md)
+- [Basic Agent](../1-basic-agent/README.md)
+- [Tool Agent](../2-tool-agent/README.md)
+- [LiteLLM Agent](../3-litellm-agent/README.md)
+- [Structured Outputs](../4-structured-outputs/README.md)
+- [Sessions And State](../5-sessions-and-state/README.md)
+- **Persistent Storage**
+- [Multi Agent](../7-multi-agent/README.md)
+- [Stateful Multi Agent](../8-stateful-multi-agent/README.md)
+- [Callbacks](../9-callbacks/README.md)
+- [Sequential Agent](../10-sequential-agent/README.md)
+- [Parallel Agent](../11-parallel-agent/README.md)
+- [Loop Agent](../12-loop-agent/README.md)
+
 This example demonstrates how to implement persistent storage for your ADK agents, allowing them to remember information and maintain conversation history across multiple sessions, application restarts, and even server deployments.
 
 ## What is Persistent Storage in ADK?
@@ -45,6 +61,7 @@ session_service = DatabaseSessionService(db_url=db_url)
 ```
 
 This service allows ADK to:
+
 - Store session data in a SQLite database file
 - Retrieve previous sessions for a user
 - Automatically manage database schemas
@@ -83,13 +100,13 @@ The agent includes tools that update the persistent state:
 def add_reminder(reminder: str, tool_context: ToolContext) -> dict:
     # Get current reminders from state
     reminders = tool_context.state.get("reminders", [])
-    
+
     # Add the new reminder
     reminders.append(reminder)
-    
+
     # Update state with the new list of reminders
     tool_context.state["reminders"] = reminders
-    
+
     return {
         "action": "add_reminder",
         "reminder": reminder,
@@ -110,6 +127,7 @@ Each change to `tool_context.state` is automatically saved to the database.
 ### Setup
 
 1. Activate the virtual environment from the root directory:
+
 ```bash
 # macOS/Linux:
 source ../.venv/bin/activate
@@ -120,6 +138,7 @@ source ../.venv/bin/activate
 ```
 
 2. Make sure your Google API key is set in the `.env` file:
+
 ```
 GOOGLE_API_KEY=your_api_key_here
 ```
@@ -133,6 +152,7 @@ python main.py
 ```
 
 This will:
+
 1. Connect to the SQLite database (or create it if it doesn't exist)
 2. Check for previous sessions for the user
 3. Start a conversation with the memory agent
@@ -143,6 +163,7 @@ This will:
 Try these interactions to test the agent's persistent memory:
 
 1. **First run:**
+
    - "What's my name?"
    - "My name is John"
    - "Add a reminder to buy groceries"
@@ -155,7 +176,7 @@ Try these interactions to test the agent's persistent memory:
    - "What reminders do I have?"
    - "Update my second reminder to submit the report by Friday"
    - "Delete the first reminder"
-   
+
 The agent will remember your name and reminders between runs!
 
 ## Using Database Storage in Production
@@ -167,6 +188,7 @@ While this example uses SQLite for simplicity, `DatabaseSessionService` supports
 - MS SQL Server: `mssql://user:password@localhost/dbname`
 
 For production use:
+
 1. Choose a database system that meets your scalability needs
 2. Configure connection pooling for efficiency
 3. Implement proper security for database credentials
@@ -177,4 +199,4 @@ For production use:
 - [ADK Sessions Documentation](https://google.github.io/adk-docs/sessions/session/)
 - [Session Service Implementations](https://google.github.io/adk-docs/sessions/session/#sessionservice-implementations)
 - [State Management in ADK](https://google.github.io/adk-docs/sessions/state/)
-- [SQLAlchemy Documentation](https://docs.sqlalchemy.org/) for advanced database configuration 
+- [SQLAlchemy Documentation](https://docs.sqlalchemy.org/) for advanced database configuration

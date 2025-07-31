@@ -1,14 +1,32 @@
 # LinkedIn Post Generator Loop Agent
 
+## Navigation
+
+- [Home](../README.md)
+- [Basic Agent](../1-basic-agent/README.md)
+- [Tool Agent](../2-tool-agent/README.md)
+- [LiteLLM Agent](../3-litellm-agent/README.md)
+- [Structured Outputs](../4-structured-outputs/README.md)
+- [Sessions And State](../5-sessions-and-state/README.md)
+- [Persistent Storage](../6-persistent-storage/README.md)
+- [Multi Agent](../7-multi-agent/README.md)
+- [Stateful Multi Agent](../8-stateful-multi-agent/README.md)
+- [Callbacks](../9-callbacks/README.md)
+- [Sequential Agent](../10-sequential-agent/README.md)
+- [Parallel Agent](../11-parallel-agent/README.md)
+- **Loop Agent**
+
 This example demonstrates the use of a Sequential and Loop Agent pattern in the Agent Development Kit (ADK) to generate and refine a LinkedIn post.
 
 ## Overview
 
 The LinkedIn Post Generator uses a sequential pipeline with a loop component to:
+
 1. Generate an initial LinkedIn post
 2. Iteratively refine the post until quality requirements are met
 
 This demonstrates several key patterns:
+
 1. **Sequential Pipeline**: A multi-step workflow with distinct stages
 2. **Iterative Refinement**: Using a loop to repeatedly refine content
 3. **Automatic Quality Checking**: Validating content against specific criteria
@@ -22,6 +40,7 @@ The system is composed of the following components:
 ### Root Sequential Agent
 
 `LinkedInPostGenerationPipeline` - A SequentialAgent that orchestrates the overall process:
+
 1. First runs the initial post generator
 2. Then executes the refinement loop
 
@@ -32,6 +51,7 @@ The system is composed of the following components:
 ### Refinement Loop
 
 `PostRefinementLoop` - A LoopAgent that executes a two-stage refinement process:
+
 1. First runs the reviewer to evaluate the post and possibly exit the loop
 2. Then runs the refiner to improve the post if the loop continues
 
@@ -53,10 +73,12 @@ A key design pattern in this example is the use of an `exit_loop` tool to contro
 2. **Loop Control**: Calls the exit_loop tool when the post passes all quality checks
 
 When the exit_loop tool is called:
+
 1. It sets `tool_context.actions.escalate = True`
 2. This signals to the LoopAgent that it should stop iterating
 
 This approach follows ADK best practices by:
+
 1. Separating initial generation from refinement
 2. Giving the quality reviewer direct control over loop termination
 3. Using a dedicated agent for post refinement
@@ -75,6 +97,7 @@ Then in the web interface, enter a prompt like:
 "Generate a LinkedIn post about what I've learned from @aiwithbrandon's Agent Development Kit tutorial."
 
 The system will:
+
 1. Generate an initial LinkedIn post
 2. Review the post for quality and compliance with requirements
 3. If the post meets all requirements, exit the loop
@@ -91,5 +114,6 @@ Generate a LinkedIn post about what I've learned from @aiwithbrandon's Agent Dev
 ## Loop Termination
 
 The loop terminates in one of two ways:
+
 1. When the post meets all quality requirements (reviewer calls the exit_loop tool)
 2. After reaching the maximum number of iterations (10)

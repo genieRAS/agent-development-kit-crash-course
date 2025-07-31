@@ -1,5 +1,21 @@
 # Structured Outputs in ADK
 
+## Navigation
+
+- [Home](../README.md)
+- [Basic Agent](../1-basic-agent/README.md)
+- [Tool Agent](../2-tool-agent/README.md)
+- [LiteLLM Agent](../3-litellm-agent/README.md)
+- **Structured Outputs**
+- [Sessions And State](../5-sessions-and-state/README.md)
+- [Persistent Storage](../6-persistent-storage/README.md)
+- [Multi Agent](../7-multi-agent/README.md)
+- [Stateful Multi Agent](../8-stateful-multi-agent/README.md)
+- [Callbacks](../9-callbacks/README.md)
+- [Sequential Agent](../10-sequential-agent/README.md)
+- [Parallel Agent](../11-parallel-agent/README.md)
+- [Loop Agent](../12-loop-agent/README.md)
+
 This example demonstrates how to implement structured outputs in the Agent Development Kit (ADK) using Pydantic models. The main agent in this example, `email_generator`, uses the `output_schema` parameter to ensure its responses conform to a specific structured format.
 
 ## What are Structured Outputs?
@@ -28,7 +44,7 @@ The Pydantic model defines exactly what fields are required and includes descrip
 ```python
 class EmailContent(BaseModel):
     """Schema for email content with subject and body."""
-    
+
     subject: str = Field(
         description="The subject line of the email. Should be concise and descriptive."
     )
@@ -69,6 +85,7 @@ When using `output_schema`:
 ### Setup
 
 1. Activate the virtual environment from the root directory:
+
 ```bash
 # macOS/Linux:
 source ../.venv/bin/activate
@@ -79,6 +96,7 @@ source ../.venv/bin/activate
 ```
 
 2. Create a `.env` file and add your Google API key:
+
 ```
 GOOGLE_API_KEY=your_api_key_here
 ```
@@ -121,4 +139,4 @@ This pattern enables reliable data passing between agents and integration with e
 ## Additional Resources
 
 - [ADK Structured Data Documentation](https://google.github.io/adk-docs/agents/llm-agents/#structuring-data-input_schema-output_schema-output_key)
-- [Pydantic Documentation](https://docs.pydantic.dev/latest/) 
+- [Pydantic Documentation](https://docs.pydantic.dev/latest/)
